@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OSMA-Bench Docs</title>
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="github-markdown-light.css">
+
+<style>
+  :root { --teal: #007f7f; --teal-dark: #006666; --teal-soft: #e6f2f2; --high: #c72f2e; --moderate: #c78b11; --low: #309341;
+          --ink: #1f2328; --muted: #57606a; --line: #d0d7de; --panel: #f6f8fa;
+          --font: "Helvetica Neue", "Nimbus Sans", Helvetica, Arial, sans-serif; }
+  body { margin: 0; background: #fff; color: var(--ink); font-family: var(--font); }
+  .layout { display: grid; grid-template-columns: 220px minmax(0, 1fr) 200px; gap: 40px; max-width: 1400px; margin: 0 auto; padding: 28px 24px; box-sizing: border-box; }
+  .sidebar, .toc { position: sticky; top: 28px; align-self: start; max-height: calc(100vh - 56px); overflow-y: auto; font: 14px/1.5 var(--font); }
+  .docbar { border-bottom: 1px solid var(--line); }
+  .docbar-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 24px; max-width: 1400px; margin: 0 auto; padding: 12px 24px; box-sizing: border-box; }
+  .docbar .brand { font-weight: 700; font-size: 18px; color: var(--ink); text-decoration: none; }
+  .doclinks { display: flex; flex-wrap: wrap; gap: 8px; }
+  .doclinks .btn { display: inline-flex; align-items: center; height: 34px; padding: 0 16px; border: 1px solid var(--teal); border-radius: 999px; font: 600 14px/1 var(--font); color: #fff; background: var(--teal); text-decoration: none; }
+  .doclinks .btn:hover { border-color: var(--teal-dark); background: var(--teal-dark); }
+  .doclinks .btn.todo { border: 1px dashed var(--line); color: var(--muted); background: var(--panel); }
+  .sidebar a { display: block; padding: 5px 8px; border-left: 3px solid transparent; color: var(--ink); text-decoration: none; overflow-wrap: anywhere; }
+  .sidebar a:hover { background: var(--panel); color: var(--teal-dark); }
+  .sidebar a.here { border-left-color: var(--teal); background: var(--teal-soft); color: var(--teal-dark); font-weight: 600; }
+  .toc { font-size: 13px; }
+  .toc .toc-head { padding: 0 0 8px 10px; color: var(--muted); font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
+  .toc a { display: block; padding: 3px 0 3px 10px; border-left: 2px solid var(--line); color: var(--muted); text-decoration: none; }
+  .toc a.toc-h3 { padding-left: 22px; }
+  .toc a:hover { color: var(--teal-dark); border-left-color: var(--teal); }
+  main.markdown-body { min-width: 0; max-width: 900px; font-family: var(--font); color: var(--ink); }
+  .markdown-body a { color: var(--teal); }
+  .markdown-body a:hover { color: var(--teal-dark); }
+  .markdown-body h1, .markdown-body h2 { border-bottom-color: var(--line); }
+  .markdown-body .anchor { float: left; margin-left: -20px; padding-right: 4px; color: var(--muted); text-decoration: none; visibility: hidden; }
+  .markdown-body :is(h1, h2, h3, h4, h5, h6):hover .anchor { visibility: visible; }
+  .markdown-body :is(h1, h2, h3, h4) { scroll-margin-top: 16px; }
+  .markdown-body table th { background: var(--panel); }
+  .markdown-body details { margin: 0 0 16px; padding: 10px 16px; border: 1px solid var(--line); border-radius: 6px; }
+  .markdown-body details[open] > summary { margin-bottom: 12px; }
+  .markdown-body summary { color: var(--teal-dark); font-weight: 600; cursor: pointer; }
+  .markdown-body img { border-radius: 4px; }
+  .math-display { margin: 0 0 16px; overflow-x: auto; overflow-y: hidden; }
+  .markdown-alert { margin: 0 0 16px; padding: 8px 16px; border-left: 4px solid var(--c); background: color-mix(in srgb, var(--c) 7%, #fff); border-radius: 0 6px 6px 0; }
+  .markdown-alert > :last-child { margin-bottom: 0; }
+  .markdown-alert-title { margin-bottom: 4px !important; color: var(--c); font-weight: 600; }
+  .markdown-alert-note { --c: var(--teal); }
+  .markdown-alert-tip { --c: var(--low); }
+  .markdown-alert-important { --c: var(--teal-dark); }
+  .markdown-alert-warning { --c: var(--moderate); }
+  .markdown-alert-caution { --c: var(--high); }
+  .pager { display: flex; justify-content: space-between; gap: 16px; margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--line); }
+  .pager a { display: block; max-width: 48%; padding: 10px 14px; border: 1px solid var(--line); border-radius: 6px; color: var(--teal-dark); font-weight: 600; text-decoration: none; }
+  .pager a:hover { border-color: var(--teal); background: var(--teal-soft); }
+  .pager a span { display: block; color: var(--muted); font-size: 12px; font-weight: 400; }
+  .pager .next { text-align: right; }
+  @media (max-width: 1100px) {
+    .layout { grid-template-columns: 200px minmax(0, 1fr); }
+    .toc { display: none; }
+  }
+  @media (max-width: 760px) {
+    .docbar-inner { padding: 10px 16px; }
+    .layout { display: block; padding: 16px; }
+    .sidebar { position: static; max-height: none; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+  }
+</style>
+</head>
+<body>
+<header class="docbar"><div class="docbar-inner"><a class="brand" href="index.html">🚦 OSMA-Bench</a><nav class="doclinks" aria-label="Project links"><a class="btn" href="https://osma-bench.github.io/">🌐 Project Page</a><a class="btn" href="https://arxiv.org/abs/2610.34674">📄 Paper</a><a class="btn" href="https://github.com/OSMA-Bench/OSMA-Bench">💻 Code</a><a class="btn" href="https://osma-bench.github.io/docs/">📖 Docs</a></nav></div></header>
+<div class="layout">
+<nav class="sidebar" aria-label="Documentation">
+<a class="here" aria-current="page" href="index.html">Overview</a>
+<a href="getting_started.html">Getting started</a>
+<a href="benchmark.html">Benchmark</a>
+<a href="metrics.html">Metrics</a>
+<a href="policies.html">Policies</a>
+<a href="experiments.html">Experiments</a>
+</nav>
+<main class="markdown-body">
+<h1 id="-osma-bench"><a class="anchor" href="#-osma-bench" aria-hidden="true">#</a>🚦 OSMA-Bench</h1>
+<p><strong>Benchmarking Obstacle-Conditioned Safety in Household Robot Navigation</strong></p>
+<p>Reaching the goal without collision is not enough. A safe robot keeps <strong>more clearance</strong> and moves
+<strong>more slowly</strong> past a baby than past a trash bin, and slows down further as it gets closer. The
+caution also has to be <strong>selective</strong>: being equally careful around everything only wastes time.
+OSMA-Bench, the Obstacle-Conditioned Safe Motion Adaptation Benchmark, tests whether navigation
+policies show this caution in their executed motion.</p>
+<p><img src="images/teaser.jpg" alt="Same route, two obstacles: both runs reach the goal without collision" /></p>
+<h2 id="how-it-works"><a class="anchor" href="#how-it-works" aria-hidden="true">#</a>How it works</h2>
+<ul>
+<li><strong>Matched comparisons.</strong> Only the obstacle on a fixed route changes: 18 obstacles over 7 routes ×
+5 layouts, 625 tasks (<a href="benchmark.html">Benchmark</a>).</li>
+<li><strong>Obstacle Caution Tiers.</strong> 🔴 High (living) &gt; 🟡 Moderate (fragile) &gt; 🟢 Low (robust)
+(<a href="benchmark.html#obstacle-caution-tiers">Benchmark</a>).</li>
+<li><strong>Two levels of scoring.</strong> Task level: TSR and CFSR. Motion level: the Semantic Sensitivity Index
+(SSI, −1 to 1) checks whether clearance and near-obstacle speed, acceleration and jerk follow the tier order
+(<a href="metrics.html">Metrics</a>).</li>
+</ul>
+<details>
+<summary>Comparison with existing robot safety and navigation evaluations</summary>
+<p>Evaluations that score executed motion do so around people <a href="#references">[1–5]</a> or under sensor
+attacks <a href="#references">[14]</a>; the others score scene understanding, plans, judgments or skill
+execution <a href="#references">[6–13]</a>. None compares obstacles in matched tests or applies context-aware
+criteria.</p>
+<table>
+<thead>
+<tr>
+<th>Benchmark</th>
+<th>Evaluation focus</th>
+<th>Motion-level evaluation</th>
+<th style="text-align:center">Matched tests</th>
+<th style="text-align:center">Context-aware criteria</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Social navigation <a href="#references">[1, 2]</a></td>
+<td>Human proximity</td>
+<td>✓ Robot motion</td>
+<td style="text-align:center">✗</td>
+<td style="text-align:center">✗</td>
+</tr>
+<tr>
+<td>Human-aware VLN <a href="#references">[3, 4]</a></td>
+<td>Human dynamics</td>
+<td>✓ Robot motion</td>
+<td style="text-align:center">✗</td>
+<td style="text-align:center">✗</td>
+</tr>
+<tr>
+<td>Path Etiquette <a href="#references">[5]</a></td>
+<td>Social etiquette</td>
+<td>✓ Robot motion</td>
+<td style="text-align:center">✗</td>
+<td style="text-align:center">✗</td>
+</tr>
+<tr>
+<td>VLM navigation <a href="#references">[6, 7, 8]</a></td>
+<td>Scene understanding</td>
+<td>✗ Plan / reasoning</td>
+<td style="text-align:center">✗</td>
+<td style="text-align:center">✗</td>
+</tr>
+<tr>
+<td>ASIMOV <a href="#references">[9]</a></td>
+<td>Plan / constitution</td>
+<td>✗ Plan / reasoning</td>
+<td style="text-align:center">✗</td>
+<td style="text-align:center">✗</td>
+</tr>
+<tr>
+<td>SAFEMIND <a href="#references">[10]</a></td>
+<td>Plan correctness</td>
+<td>✗ Plan / reasoning</td>
+<td style="text-align:center">✗</td>
+<td style="text-align:center">✗</td>
+</tr>
+<tr>
+<td>HomeSafe-Bench <a href="#references">[11]</a></td>
+<td>Unsafe action detection</td>
+<td>✗ Video judgment</td>
+<td style="text-align:center">✗</td>
+<td style="text-align:center">✗</td>
+</tr>
+<tr>
+<td>IS-Bench <a href="#references">[12]</a></td>
+<td>Hazard handling</td>
+<td>✗ Skill execution</td>
+<td style="text-align:center">✗</td>
+<td style="text-align:center">✗</td>
+</tr>
+<tr>
+<td>BadRobot <a href="#references">[13]</a></td>
+<td>Adversarial (jailbreak)</td>
+<td>✗ Plan / reasoning</td>
+<td style="text-align:center">✗</td>
+<td style="text-align:center">✗</td>
+</tr>
+<tr>
+<td>ANNIE <a href="#references">[14]</a></td>
+<td>Adversarial (sensor)</td>
+<td>✓ Robot motion</td>
+<td style="text-align:center">✗</td>
+<td style="text-align:center">✗</td>
+</tr>
+<tr>
+<td><strong>OSMA-Bench (ours)</strong></td>
+<td>Obstacle-conditioned motion adaptation</td>
+<td>✓ Robot motion</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Motion-level evaluation</td>
+<td>✓ explicit assessment of executed low-level motion, such as clearance, speed or collisions; ✗ not a primary target (the text gives the evaluation level)</td>
+</tr>
+<tr>
+<td>Matched tests</td>
+<td>obstacle identities or caution tiers are compared while the layout, the obstacle position and the start–goal pair stay fixed</td>
+</tr>
+<tr>
+<td>Context-aware criteria</td>
+<td>safety criteria that depend on the situation</td>
+</tr>
+</tbody>
+</table>
+<h4 id="references"><a class="anchor" href="#references" aria-hidden="true">#</a>References</h4>
+<ol>
+<li>N. Tsoi et al. SEAN: Social environment for autonomous navigation. <em>HAI</em>, 2020.</li>
+<li>A. Biswas et al. SocNavBench: A grounded simulation testing framework for evaluating social
+navigation. <em>ACM Transactions on Human-Robot Interaction</em>, 2022.</li>
+<li>H. Li et al. Human-aware vision-and-language navigation: Bridging simulation to reality with
+dynamic human interactions. <em>NeurIPS</em>, 2024.</li>
+<li>Y. Dong et al. HA-VLN 2.0: An open benchmark and leaderboard for human-aware navigation in
+discrete and continuous environments with dynamic multi-human interactions. arXiv:2503.14229,
+2025.</li>
+<li>Z. Fang et al. From obstacles to etiquette: Robot social navigation with VLM-informed path
+selection. <em>IEEE RA-L</em>, 2026.</li>
+<li>T. Windecker et al. NaviTrace: Evaluating embodied navigation of vision-language models.
+arXiv:2510.26909, 2025.</li>
+<li>M. J. Munje et al. SocialNav-SUB: Benchmarking VLMs for scene understanding in social robot
+navigation. <em>CoRL</em>, 2025.</li>
+<li>T. Taniguchi et al. Towards safer mobile agents: Scalable generation and evaluation of diverse
+scenarios for VLMs. arXiv:2601.08470, 2026.</li>
+<li>P. Sermanet et al. Generating robot constitutions &amp; benchmarks for semantic safety. <em>CoRL</em>, 2025.</li>
+<li>R. Chen et al. SafeMind: Benchmarking and mitigating safety risks in embodied LLM agents.
+arXiv:2509.25885, 2025.</li>
+<li>J. Pu et al. HomeSafe-Bench: Evaluating vision-language models on unsafe action detection for
+embodied agents in household scenarios. arXiv:2603.11975, 2026.</li>
+<li>X. Lu et al. IS-Bench: Evaluating interactive safety of VLM-driven embodied agents in daily
+household tasks. <em>AAAI</em>, 2026.</li>
+<li>H. Zhang et al. BadRobot: Jailbreaking embodied LLM agents in the physical world. <em>ICLR</em>, 2025.</li>
+<li>Y. Huang et al. ANNIE: Be careful of your robots. arXiv:2509.03383, 2025.</li>
+</ol>
+</details>
+<h2 id="what-the-paper-finds"><a class="anchor" href="#what-the-paper-finds" aria-hidden="true">#</a>What the paper finds</h2>
+<p>The paper evaluates 20 policies in three groups: 4 VLAs, and 8 open-weight VLMs each run through
+VoxPoser and through PIVOT. <strong>Policies know which obstacles need caution, but their motion does not
+show it.</strong> Each research question's result, and the commands that reproduce it, are in
+<a href="experiments.html">Experiments</a>.</p>
+<h2 id="documentation"><a class="anchor" href="#documentation" aria-hidden="true">#</a>Documentation</h2>
+<table>
+<thead>
+<tr>
+<th>Page</th>
+<th>Paper</th>
+<th>Contents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="getting_started.html">Getting started</a></td>
+<td></td>
+<td>container, assets, a VLM server and one smoke run</td>
+</tr>
+<tr>
+<td><a href="benchmark.html">Benchmark</a></td>
+<td>§3.1, App. B</td>
+<td>matched comparisons, caution tiers, routes, layouts, task classes</td>
+</tr>
+<tr>
+<td><a href="metrics.html">Metrics</a></td>
+<td>§3.2, App. C</td>
+<td>TSR, CFSR, SSI and how to compute them</td>
+</tr>
+<tr>
+<td><a href="policies.html">Policies</a></td>
+<td>§4.1, App. D</td>
+<td>the VLA, VoxPoser and PIVOT groups and how to run them</td>
+</tr>
+<tr>
+<td><a href="experiments.html">Experiments</a></td>
+<td>§4, App. F, G</td>
+<td>how to run and score RQ1–RQ3, with each result</td>
+</tr>
+</tbody>
+</table>
+<h2 id="repository-layout"><a class="anchor" href="#repository-layout" aria-hidden="true">#</a>Repository layout</h2>
+<table>
+<thead>
+<tr>
+<th>Path</th>
+<th>Contents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>benchmark/robocasa/</code></td>
+<td>RoboCasa with the OSMA-Bench tasks, the episode ledger and the metrics (submodule)</td>
+</tr>
+<tr>
+<td><code>benchmark/robosuite/</code></td>
+<td>robosuite, the simulation core under RoboCasa (submodule)</td>
+</tr>
+<tr>
+<td><code>policy/VLA/</code>, <code>policy/Voxposer/</code>, <code>policy/PIVOT/</code></td>
+<td>the three policy groups; <code>Voxposer</code> also holds the shared holonomic waypoint follower (submodules)</td>
+</tr>
+<tr>
+<td><code>docker/</code></td>
+<td>container image and launcher</td>
+</tr>
+<tr>
+<td><code>scripts/</code></td>
+<td>run and analysis utilities, including <code>merge_seed_shards.py</code></td>
+</tr>
+<tr>
+<td><code>page/</code></td>
+<td>the project page, published to osma-bench.github.io (with the docs under /docs/)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="clone"><a class="anchor" href="#clone" aria-hidden="true">#</a>Clone</h2>
+<pre><code class="language-bash">git clone https://github.com/OSMA-Bench/OSMA-Bench
+cd OSMA-Bench
+</code></pre>
+<div class="markdown-alert markdown-alert-note">
+<p class="markdown-alert-title">Note</p>
+<p>OSMA-Bench/OSMA-Bench is a single-commit snapshot with every submodule inlined, so there is no submodule step.
+Do not add <code>--remote</code>: it moves the submodules to their branch heads instead of the commits
+recorded in this repository.</p>
+</div>
+<p>Continue with <a href="getting_started.html">Getting started</a>.</p>
+
+<nav class="pager" aria-label="Previous and next page"><span></span><a class="next" href="getting_started.html"><span>Next</span>Getting started</a></nav>
+</main>
+<aside class="toc"><div class="toc-head">On this page</div>
+<a class="toc-h2" href="#how-it-works">How it works</a>
+<a class="toc-h2" href="#what-the-paper-finds">What the paper finds</a>
+<a class="toc-h2" href="#documentation">Documentation</a>
+<a class="toc-h2" href="#repository-layout">Repository layout</a>
+<a class="toc-h2" href="#clone">Clone</a>
+</aside>
+</div>
+</body>
+</html>

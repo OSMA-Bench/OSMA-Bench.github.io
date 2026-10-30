@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OSMA-Bench Docs</title>
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="github-markdown-light.css">
+
+<style>
+  :root { --teal: #007f7f; --teal-dark: #006666; --teal-soft: #e6f2f2; --high: #c72f2e; --moderate: #c78b11; --low: #309341;
+          --ink: #1f2328; --muted: #57606a; --line: #d0d7de; --panel: #f6f8fa;
+          --font: "Helvetica Neue", "Nimbus Sans", Helvetica, Arial, sans-serif; }
+  body { margin: 0; background: #fff; color: var(--ink); font-family: var(--font); }
+  .layout { display: grid; grid-template-columns: 220px minmax(0, 1fr) 200px; gap: 40px; max-width: 1400px; margin: 0 auto; padding: 28px 24px; box-sizing: border-box; }
+  .sidebar, .toc { position: sticky; top: 28px; align-self: start; max-height: calc(100vh - 56px); overflow-y: auto; font: 14px/1.5 var(--font); }
+  .docbar { border-bottom: 1px solid var(--line); }
+  .docbar-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 24px; max-width: 1400px; margin: 0 auto; padding: 12px 24px; box-sizing: border-box; }
+  .docbar .brand { font-weight: 700; font-size: 18px; color: var(--ink); text-decoration: none; }
+  .doclinks { display: flex; flex-wrap: wrap; gap: 8px; }
+  .doclinks .btn { display: inline-flex; align-items: center; height: 34px; padding: 0 16px; border: 1px solid var(--teal); border-radius: 999px; font: 600 14px/1 var(--font); color: #fff; background: var(--teal); text-decoration: none; }
+  .doclinks .btn:hover { border-color: var(--teal-dark); background: var(--teal-dark); }
+  .doclinks .btn.todo { border: 1px dashed var(--line); color: var(--muted); background: var(--panel); }
+  .sidebar a { display: block; padding: 5px 8px; border-left: 3px solid transparent; color: var(--ink); text-decoration: none; overflow-wrap: anywhere; }
+  .sidebar a:hover { background: var(--panel); color: var(--teal-dark); }
+  .sidebar a.here { border-left-color: var(--teal); background: var(--teal-soft); color: var(--teal-dark); font-weight: 600; }
+  .toc { font-size: 13px; }
+  .toc .toc-head { padding: 0 0 8px 10px; color: var(--muted); font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
+  .toc a { display: block; padding: 3px 0 3px 10px; border-left: 2px solid var(--line); color: var(--muted); text-decoration: none; }
+  .toc a.toc-h3 { padding-left: 22px; }
+  .toc a:hover { color: var(--teal-dark); border-left-color: var(--teal); }
+  main.markdown-body { min-width: 0; max-width: 900px; font-family: var(--font); color: var(--ink); }
+  .markdown-body a { color: var(--teal); }
+  .markdown-body a:hover { color: var(--teal-dark); }
+  .markdown-body h1, .markdown-body h2 { border-bottom-color: var(--line); }
+  .markdown-body .anchor { float: left; margin-left: -20px; padding-right: 4px; color: var(--muted); text-decoration: none; visibility: hidden; }
+  .markdown-body :is(h1, h2, h3, h4, h5, h6):hover .anchor { visibility: visible; }
+  .markdown-body :is(h1, h2, h3, h4) { scroll-margin-top: 16px; }
+  .markdown-body table th { background: var(--panel); }
+  .markdown-body details { margin: 0 0 16px; padding: 10px 16px; border: 1px solid var(--line); border-radius: 6px; }
+  .markdown-body details[open] > summary { margin-bottom: 12px; }
+  .markdown-body summary { color: var(--teal-dark); font-weight: 600; cursor: pointer; }
+  .markdown-body img { border-radius: 4px; }
+  .math-display { margin: 0 0 16px; overflow-x: auto; overflow-y: hidden; }
+  .markdown-alert { margin: 0 0 16px; padding: 8px 16px; border-left: 4px solid var(--c); background: color-mix(in srgb, var(--c) 7%, #fff); border-radius: 0 6px 6px 0; }
+  .markdown-alert > :last-child { margin-bottom: 0; }
+  .markdown-alert-title { margin-bottom: 4px !important; color: var(--c); font-weight: 600; }
+  .markdown-alert-note { --c: var(--teal); }
+  .markdown-alert-tip { --c: var(--low); }
+  .markdown-alert-important { --c: var(--teal-dark); }
+  .markdown-alert-warning { --c: var(--moderate); }
+  .markdown-alert-caution { --c: var(--high); }
+  .pager { display: flex; justify-content: space-between; gap: 16px; margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--line); }
+  .pager a { display: block; max-width: 48%; padding: 10px 14px; border: 1px solid var(--line); border-radius: 6px; color: var(--teal-dark); font-weight: 600; text-decoration: none; }
+  .pager a:hover { border-color: var(--teal); background: var(--teal-soft); }
+  .pager a span { display: block; color: var(--muted); font-size: 12px; font-weight: 400; }
+  .pager .next { text-align: right; }
+  @media (max-width: 1100px) {
+    .layout { grid-template-columns: 200px minmax(0, 1fr); }
+    .toc { display: none; }
+  }
+  @media (max-width: 760px) {
+    .docbar-inner { padding: 10px 16px; }
+    .layout { display: block; padding: 16px; }
+    .sidebar { position: static; max-height: none; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+  }
+</style>
+</head>
+<body>
+<header class="docbar"><div class="docbar-inner"><a class="brand" href="index.html">🚦 OSMA-Bench</a><nav class="doclinks" aria-label="Project links"><a class="btn" href="https://osma-bench.github.io/">🌐 Project Page</a><a class="btn" href="https://arxiv.org/abs/2610.34674">📄 Paper</a><a class="btn" href="https://github.com/OSMA-Bench/OSMA-Bench">💻 Code</a><a class="btn" href="https://osma-bench.github.io/docs/">📖 Docs</a></nav></div></header>
+<div class="layout">
+<nav class="sidebar" aria-label="Documentation">
+<a href="index.html">Overview</a>
+<a href="getting_started.html">Getting started</a>
+<a href="benchmark.html">Benchmark</a>
+<a href="metrics.html">Metrics</a>
+<a class="here" aria-current="page" href="policies.html">Policies</a>
+<a href="experiments.html">Experiments</a>
+</nav>
+<main class="markdown-body">
+<h1 id="policies"><a class="anchor" href="#policies" aria-hidden="true">#</a>Policies</h1>
+<p>Three <strong>policy groups</strong> run in closed loop (paper §4.1, App. D): VLAs, and VLMs driving VoxPoser
+<a href="#references">[1]</a> or PIVOT <a href="#references">[2]</a>. Commands run in the container
+(<a href="getting_started.html">Getting started</a>) with the repository at <code>/workspace</code>; <code>blocking_tasks.txt</code>
+holds the 125 benchmark classes (<a href="benchmark.html#tasks-in-code">Benchmark</a>).</p>
+<h2 id="vla-policies"><a class="anchor" href="#vla-policies" aria-hidden="true">#</a>VLA policies</h2>
+<p>Released RoboCasa checkpoints of four VLAs, weights fixed. Each is a profile in
+<code>policy/VLA/src/configs/models.yaml</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Policy</th>
+<th>Profile</th>
+<th>Actions predicted / executed per query</th>
+<th style="text-align:right">Server port</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>XR-1 (Xiaomi-Robotics-1) <a href="#references">[3]</a></td>
+<td><code>xr1</code></td>
+<td>16 / 16</td>
+<td style="text-align:right">8100</td>
+</tr>
+<tr>
+<td>π0.5-OpenTau <a href="#references">[4]</a></td>
+<td><code>pi05_opentau</code></td>
+<td>20 / 20</td>
+<td style="text-align:right">8101</td>
+</tr>
+<tr>
+<td>GR00T N1.5 <a href="#references">[5, 6]</a></td>
+<td><code>groot_n1_5_atomic_seen</code></td>
+<td>16 / 16</td>
+<td style="text-align:right">8102</td>
+</tr>
+<tr>
+<td>π0.5-Human300 <a href="#references">[7]</a></td>
+<td><code>pi05_human300</code></td>
+<td>50 / 50 with <code>--replan-steps 50</code> (profile default 5; paper App. D.1)</td>
+<td style="text-align:right">8103</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Input:</strong> instruction c1 (<a href="experiments.html">Experiments</a>), left, right and wrist RGB at 256 × 256,
+and proprioception; no top-down image, obstacle position or tier label.</li>
+<li><strong>Output:</strong> 12-D actions through the <code>HYBRID_MOBILE_BASE</code> composite controller with
+<code>--base-controller legacy</code>, at 20 Hz.</li>
+</ul>
+<p>Serve each model from its own environment (<code>policy/VLA/README.md</code> §2.2; GR00T N1.5 with the
+<code>groot_n1_5_atomic_seen</code> profile). One seed of one model:</p>
+<pre><code class="language-bash">python3 policy/VLA/src/run_vla_eval.py \
+  --model-profile xr1 --policy-url http://127.0.0.1:8100 \
+  --tasks $(cat blocking_tasks.txt) --layout-ids 0,2,5,7,8 --style MODERN_1 \
+  --seed 0 --policy-seed 0 --horizon 500 \
+  --out-dir /workspace/outputs/xr1_seed0 --ledger-dir /workspace/outputs/xr1_seed0/ledger
+</code></pre>
+<p><code>--num-workers N --worker-id i</code> splits a seed over workers. Without <code>--tasks</code> the runner also takes
+navigation classes outside OSMA-Bench.</p>
+<h2 id="vlm-based-policies"><a class="anchor" href="#vlm-based-policies" aria-hidden="true">#</a>VLM-based policies</h2>
+<table>
+<thead>
+<tr>
+<th>VLM</th>
+<th>Served with</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Qwen3.6-35B-A3B, Qwen3.5-4B, Qwen3.5-9B <a href="#references">[8]</a>; Gemma-4-E4B-it <a href="#references">[9]</a>; Cosmos-Reason2-8B, Cosmos-Reason2-32B <a href="#references">[10]</a>; RoboBrain2.5-8B-NV <a href="#references">[11]</a></td>
+<td>vLLM, bf16, one GPU per replica (<a href="getting_started.html#serve-a-vlm">Serve a VLM</a>)</td>
+</tr>
+<tr>
+<td>Gemma-4-12B-it <a href="#references">[9]</a></td>
+<td>Hugging Face Transformers; the server is <em>not yet in the repository</em></td>
+</tr>
+</tbody>
+</table>
+<p>A runner reaches the model's OpenAI-compatible endpoint through <code>-m &lt;served model name&gt; -p &lt;port&gt;</code>.</p>
+<ul>
+<li><strong>VoxPoser</strong> <a href="#references">[1]</a> (<code>policy/Voxposer</code>, code generation): the VLM writes code that builds value maps and
+sets obstacle-specific clearance and velocity; an A* planner turns the maps into a path.</li>
+<li><strong>PIVOT</strong> <a href="#references">[2]</a> (<code>policy/PIVOT</code>, waypoint selection): the VLM picks the next waypoint among candidate
+points marked on the scene image, over several rounds.</li>
+</ul>
+<p>Both drive the base through a <strong>shared holonomic waypoint follower</strong> (robosuite's 11-D <code>BASIC</code>
+action). <code>NAV_MODE=holonomic</code> selects it over <code>navigation_controller.mode</code> in
+<code>policy/Voxposer/src/configs/robocasa_config.yaml</code>, and <code>run.json</code> records it as <code>nav_mode</code>.</p>
+<p>One seed of one model. Worker <code>i</code> runs a slice of <code>blocking_tasks.txt</code>; the folder names are what
+<code>scripts/merge_seed_shards.py</code> looks for:</p>
+<pre><code class="language-bash">OUT=/workspace/outputs; M=&lt;model tag&gt;; S=0; i=0; TASKS=&quot;&lt;slice i of blocking_tasks.txt&gt;&quot;
+
+# VoxPoser
+cd /workspace/policy/Voxposer &amp;&amp; MUJOCO_GL=egl NAV_MODE=holonomic \
+  ROBOCASA_SEED=$S ROBOCASA_LEDGER_DIR=$OUT/${M}_seed${S}_vox_s${i}_ledger \
+  python3 src/run_LMP.py $TASKS -m &lt;served model name&gt; -p &lt;port&gt; \
+    --layout-ids 0,2,5,7,8 --style-ids 3 --seed $S -w $i -o $OUT/${M}_seed${S}_vox_s${i}
+
+# PIVOT
+cd /workspace/policy/PIVOT &amp;&amp; MUJOCO_GL=egl NAV_MODE=holonomic \
+  ROBOCASA_SEED=$S ROBOCASA_LEDGER_DIR=$OUT/${M}_seed${S}_piv_s${i}_ledger \
+  python3 run_pivot.py $TASKS -m &lt;served model name&gt; -p &lt;port&gt; \
+    --layout-ids 0,2,5,7,8 --style-ids 3 --seed $S --subgoals pivot -o $OUT/${M}_seed${S}_piv_s${i}
+
+# after all workers finish: one folder per model, seed and policy
+python3 /workspace/scripts/merge_seed_shards.py --root $OUT --prefix $M --seed $S \
+  --suffix vox --dest $OUT/${M}_seed${S}_voxposer
+python3 /workspace/scripts/merge_seed_shards.py --root $OUT --prefix $M --seed $S \
+  --suffix piv --dest $OUT/${M}_seed${S}_pivot
+</code></pre>
+<ul>
+<li><code>ROBOCASA_SEED</code> sets the environment seed (42 when unset) and <code>--seed</code> the policy's sampling seed;
+the paper sets both to the same value.</li>
+<li>PIVOT needs <code>--layout-ids</code> and <code>--subgoals pivot</code>; its defaults are layout 0 and <code>solver</code> subgoals.</li>
+</ul>
+<h2 id="all-policies"><a class="anchor" href="#all-policies" aria-hidden="true">#</a>All policies</h2>
+<ul>
+<li>A task ends at task success or when the step budget runs out: <code>--horizon</code> control steps for VLAs,
+<code>max_steps_per_waypoint</code> (<code>robocasa_config.yaml</code>) per waypoint for the planners.</li>
+<li>Re-running a command with the same output folder (and worker id, where there is one) skips the
+tasks it has already finished.</li>
+<li>Score the ledgers with <a href="metrics.html#computing-the-metrics">Metrics</a>.</li>
+</ul>
+<h2 id="references"><a class="anchor" href="#references" aria-hidden="true">#</a>References</h2>
+<ol>
+<li>W. Huang et al. VoxPoser: Composable 3D value maps for robotic manipulation with language models.
+<em>CoRL</em>, 2023.</li>
+<li>S. Nasiriany et al. PIVOT: Iterative visual prompting elicits actionable knowledge for VLMs.
+<em>ICML</em>, 2024.</li>
+<li>Xiaomi Robotics Team et al. Xiaomi-Robotics-1: Scaling vision-language-action models with over
+100k hours of real-world trajectories. arXiv:2607.15330, 2026.</li>
+<li>Tensor. OpenTau: Tensor's VLA training infrastructure for real-world robotics in PyTorch.
+<a href="https://github.com/TensorAuto/OpenTau">https://github.com/TensorAuto/OpenTau</a>, 2025.</li>
+<li>NVIDIA et al. GR00T N1: An open foundation model for generalist humanoid robots.
+arXiv:2503.14734, 2025.</li>
+<li>NVIDIA. GR00T N1.5: An improved open foundation model for generalist humanoid robots.
+<a href="https://research.nvidia.com/labs/gear/gr00t-n1_5/">https://research.nvidia.com/labs/gear/gr00t-n1_5/</a>, 2025.</li>
+<li>Physical Intelligence et al. π0.5: A vision-language-action model with open-world
+generalization. <em>CoRL</em>, 2025.</li>
+<li>S. Bai et al. Qwen3-VL technical report. arXiv:2511.21631, 2025.</li>
+<li>Gemma Team. Gemma 4 technical report. arXiv:2607.02770, 2026.</li>
+<li>NVIDIA et al. Cosmos-Reason1: From physical common sense to embodied reasoning.
+arXiv:2503.15558, 2025.</li>
+<li>H. Tan et al. RoboBrain 2.5: Depth in sight, time in mind. arXiv:2601.14352, 2026.</li>
+</ol>
+
+<nav class="pager" aria-label="Previous and next page"><a class="prev" href="metrics.html"><span>Previous</span>Metrics</a><a class="next" href="experiments.html"><span>Next</span>Experiments</a></nav>
+</main>
+<aside class="toc"><div class="toc-head">On this page</div>
+<a class="toc-h2" href="#vla-policies">VLA policies</a>
+<a class="toc-h2" href="#vlm-based-policies">VLM-based policies</a>
+<a class="toc-h2" href="#all-policies">All policies</a>
+<a class="toc-h2" href="#references">References</a>
+</aside>
+</div>
+</body>
+</html>

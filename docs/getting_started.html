@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OSMA-Bench Docs</title>
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="github-markdown-light.css">
+
+<style>
+  :root { --teal: #007f7f; --teal-dark: #006666; --teal-soft: #e6f2f2; --high: #c72f2e; --moderate: #c78b11; --low: #309341;
+          --ink: #1f2328; --muted: #57606a; --line: #d0d7de; --panel: #f6f8fa;
+          --font: "Helvetica Neue", "Nimbus Sans", Helvetica, Arial, sans-serif; }
+  body { margin: 0; background: #fff; color: var(--ink); font-family: var(--font); }
+  .layout { display: grid; grid-template-columns: 220px minmax(0, 1fr) 200px; gap: 40px; max-width: 1400px; margin: 0 auto; padding: 28px 24px; box-sizing: border-box; }
+  .sidebar, .toc { position: sticky; top: 28px; align-self: start; max-height: calc(100vh - 56px); overflow-y: auto; font: 14px/1.5 var(--font); }
+  .docbar { border-bottom: 1px solid var(--line); }
+  .docbar-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 24px; max-width: 1400px; margin: 0 auto; padding: 12px 24px; box-sizing: border-box; }
+  .docbar .brand { font-weight: 700; font-size: 18px; color: var(--ink); text-decoration: none; }
+  .doclinks { display: flex; flex-wrap: wrap; gap: 8px; }
+  .doclinks .btn { display: inline-flex; align-items: center; height: 34px; padding: 0 16px; border: 1px solid var(--teal); border-radius: 999px; font: 600 14px/1 var(--font); color: #fff; background: var(--teal); text-decoration: none; }
+  .doclinks .btn:hover { border-color: var(--teal-dark); background: var(--teal-dark); }
+  .doclinks .btn.todo { border: 1px dashed var(--line); color: var(--muted); background: var(--panel); }
+  .sidebar a { display: block; padding: 5px 8px; border-left: 3px solid transparent; color: var(--ink); text-decoration: none; overflow-wrap: anywhere; }
+  .sidebar a:hover { background: var(--panel); color: var(--teal-dark); }
+  .sidebar a.here { border-left-color: var(--teal); background: var(--teal-soft); color: var(--teal-dark); font-weight: 600; }
+  .toc { font-size: 13px; }
+  .toc .toc-head { padding: 0 0 8px 10px; color: var(--muted); font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
+  .toc a { display: block; padding: 3px 0 3px 10px; border-left: 2px solid var(--line); color: var(--muted); text-decoration: none; }
+  .toc a.toc-h3 { padding-left: 22px; }
+  .toc a:hover { color: var(--teal-dark); border-left-color: var(--teal); }
+  main.markdown-body { min-width: 0; max-width: 900px; font-family: var(--font); color: var(--ink); }
+  .markdown-body a { color: var(--teal); }
+  .markdown-body a:hover { color: var(--teal-dark); }
+  .markdown-body h1, .markdown-body h2 { border-bottom-color: var(--line); }
+  .markdown-body .anchor { float: left; margin-left: -20px; padding-right: 4px; color: var(--muted); text-decoration: none; visibility: hidden; }
+  .markdown-body :is(h1, h2, h3, h4, h5, h6):hover .anchor { visibility: visible; }
+  .markdown-body :is(h1, h2, h3, h4) { scroll-margin-top: 16px; }
+  .markdown-body table th { background: var(--panel); }
+  .markdown-body details { margin: 0 0 16px; padding: 10px 16px; border: 1px solid var(--line); border-radius: 6px; }
+  .markdown-body details[open] > summary { margin-bottom: 12px; }
+  .markdown-body summary { color: var(--teal-dark); font-weight: 600; cursor: pointer; }
+  .markdown-body img { border-radius: 4px; }
+  .math-display { margin: 0 0 16px; overflow-x: auto; overflow-y: hidden; }
+  .markdown-alert { margin: 0 0 16px; padding: 8px 16px; border-left: 4px solid var(--c); background: color-mix(in srgb, var(--c) 7%, #fff); border-radius: 0 6px 6px 0; }
+  .markdown-alert > :last-child { margin-bottom: 0; }
+  .markdown-alert-title { margin-bottom: 4px !important; color: var(--c); font-weight: 600; }
+  .markdown-alert-note { --c: var(--teal); }
+  .markdown-alert-tip { --c: var(--low); }
+  .markdown-alert-important { --c: var(--teal-dark); }
+  .markdown-alert-warning { --c: var(--moderate); }
+  .markdown-alert-caution { --c: var(--high); }
+  .pager { display: flex; justify-content: space-between; gap: 16px; margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--line); }
+  .pager a { display: block; max-width: 48%; padding: 10px 14px; border: 1px solid var(--line); border-radius: 6px; color: var(--teal-dark); font-weight: 600; text-decoration: none; }
+  .pager a:hover { border-color: var(--teal); background: var(--teal-soft); }
+  .pager a span { display: block; color: var(--muted); font-size: 12px; font-weight: 400; }
+  .pager .next { text-align: right; }
+  @media (max-width: 1100px) {
+    .layout { grid-template-columns: 200px minmax(0, 1fr); }
+    .toc { display: none; }
+  }
+  @media (max-width: 760px) {
+    .docbar-inner { padding: 10px 16px; }
+    .layout { display: block; padding: 16px; }
+    .sidebar { position: static; max-height: none; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+  }
+</style>
+</head>
+<body>
+<header class="docbar"><div class="docbar-inner"><a class="brand" href="index.html">🚦 OSMA-Bench</a><nav class="doclinks" aria-label="Project links"><a class="btn" href="https://osma-bench.github.io/">🌐 Project Page</a><a class="btn" href="https://arxiv.org/abs/2610.34674">📄 Paper</a><a class="btn" href="https://github.com/OSMA-Bench/OSMA-Bench">💻 Code</a><a class="btn" href="https://osma-bench.github.io/docs/">📖 Docs</a></nav></div></header>
+<div class="layout">
+<nav class="sidebar" aria-label="Documentation">
+<a href="index.html">Overview</a>
+<a class="here" aria-current="page" href="getting_started.html">Getting started</a>
+<a href="benchmark.html">Benchmark</a>
+<a href="metrics.html">Metrics</a>
+<a href="policies.html">Policies</a>
+<a href="experiments.html">Experiments</a>
+</nav>
+<main class="markdown-body">
+<h1 id="getting-started"><a class="anchor" href="#getting-started" aria-hidden="true">#</a>Getting started</h1>
+<p>Set up OSMA-Bench and run one task end to end. Clone the repository first
+(<a href="index.html#clone">README</a>).</p>
+<h2 id="build-and-start-the-container"><a class="anchor" href="#build-and-start-the-container" aria-hidden="true">#</a>Build and start the container</h2>
+<p>From the repository root:</p>
+<pre><code class="language-bash">docker build -f docker/Dockerfile -t robotics-safety:latest .
+bash docker/run_docker.sh
+</code></pre>
+<p><code>run_docker.sh</code> opens a shell in <code>robotics-safety-container</code> (all GPUs, host network, repository at
+<code>/workspace</code>, host <code>~/.cache/huggingface</code> at <code>/root/.cache/huggingface</code>), replacing a running
+container of that name.
+More shells: <code>docker exec -it robotics-safety-container bash</code>.</p>
+<p>The image renders headless (<code>MUJOCO_GL=egl</code>) and pins <code>vllm==0.11.2</code> and <code>numpy==1.26.4</code> so that
+RoboCasa and vLLM share one environment; newer models may need a newer vLLM.</p>
+<h2 id="download-assets-and-check-the-simulator"><a class="anchor" href="#download-assets-and-check-the-simulator" aria-hidden="true">#</a>Download assets and check the simulator</h2>
+<p>Once, inside the container:</p>
+<pre><code class="language-bash">python3 benchmark/robocasa/robocasa/scripts/download_kitchen_assets.py
+python3 benchmark/robocasa/robocasa/scripts/setup_macros.py
+python3 benchmark/robocasa/check_running.py   # random rollout, prints &quot;It works!&quot;
+</code></pre>
+<h2 id="serve-a-vlm"><a class="anchor" href="#serve-a-vlm" aria-hidden="true">#</a>Serve a VLM</h2>
+<p>For VoxPoser and PIVOT, in a second container shell:</p>
+<pre><code class="language-bash">python3 -m vllm.entrypoints.openai.api_server --model &lt;hf model id&gt; --port 8003 \
+  --max-model-len 16384 --gpu-memory-utilization 0.85 \
+  --trust-remote-code --limit-mm-per-prompt '{&quot;image&quot;: 5}'
+</code></pre>
+<p>Ready when <code>curl -sf http://localhost:8003/health</code> succeeds. A runner's <code>-m</code> is the served
+name (<code>--model</code> unless <code>--served-model-name</code> is set). VLAs use their own servers
+(<a href="policies.html#vla-policies">Policies</a>).</p>
+<h2 id="smoke-run"><a class="anchor" href="#smoke-run" aria-hidden="true">#</a>Smoke run</h2>
+<p>The dog on Route C, layout 0, with VoxPoser:</p>
+<pre><code class="language-bash">cd /workspace/policy/Voxposer
+MUJOCO_GL=egl NAV_MODE=holonomic ROBOCASA_SEED=0 \
+ROBOCASA_LEDGER_DIR=/workspace/outputs/smoke/ledger \
+  python3 src/run_LMP.py NavigateKitchenDogBlockingRouteC \
+    -m &lt;hf model id&gt; -p 8003 --layout-ids 0 --style-ids 3 --seed 0 \
+    -o /workspace/outputs/smoke
+</code></pre>
+<p><code>/workspace/outputs/smoke/ledger/episodes.jsonl</code> then holds one row with <code>task_success</code> and
+<code>collision_free_success</code>, and <code>ledger/run.json</code> shows <code>&quot;nav_mode&quot;: &quot;holonomic&quot;</code>.</p>
+<h2 id="full-evaluation"><a class="anchor" href="#full-evaluation" aria-hidden="true">#</a>Full evaluation</h2>
+<ol>
+<li>Write the 125 benchmark classes to <code>blocking_tasks.txt</code> (<a href="benchmark.html#tasks-in-code">Benchmark</a>).</li>
+<li>Run every model for seeds {0, 3, 16} (<a href="policies.html">Policies</a>).</li>
+<li>Score each seed; every model should have 625 episodes
+(<a href="metrics.html#computing-the-metrics">Metrics</a>).</li>
+<li>Run the RQ2 and RQ3 conditions (<a href="experiments.html">Experiments</a>).</li>
+</ol>
+<h2 id="where-results-go"><a class="anchor" href="#where-results-go" aria-hidden="true">#</a>Where results go</h2>
+<p>A merged VoxPoser or PIVOT folder:</p>
+<pre><code>outputs/&lt;model&gt;_seed&lt;S&gt;_voxposer/
+├── layout{0,2,5,7,8}/&lt;task class&gt;/    # trajectory_log.json, run.log, videos
+├── results.json, results_progress.jsonl
+├── merge_manifest.json                # which worker folders were merged
+└── ledger/
+    ├── episodes.jsonl                 # one row per task
+    ├── traj/l&lt;layout&gt;_s&lt;style&gt;_&lt;task class&gt;_seed&lt;S&gt;.npz   # per-step trajectory
+    └── run.json                       # policy, model, nav_mode, seed, code commits
+</code></pre>
+<p>VLA runs write the same ledger to <code>--ledger-dir</code>. The metrics read only the ledger.</p>
+
+<nav class="pager" aria-label="Previous and next page"><a class="prev" href="index.html"><span>Previous</span>Overview</a><a class="next" href="benchmark.html"><span>Next</span>Benchmark</a></nav>
+</main>
+<aside class="toc"><div class="toc-head">On this page</div>
+<a class="toc-h2" href="#build-and-start-the-container">Build and start the container</a>
+<a class="toc-h2" href="#download-assets-and-check-the-simulator">Download assets and check the simulator</a>
+<a class="toc-h2" href="#serve-a-vlm">Serve a VLM</a>
+<a class="toc-h2" href="#smoke-run">Smoke run</a>
+<a class="toc-h2" href="#full-evaluation">Full evaluation</a>
+<a class="toc-h2" href="#where-results-go">Where results go</a>
+</aside>
+</div>
+</body>
+</html>

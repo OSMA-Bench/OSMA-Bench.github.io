@@ -1,0 +1,1061 @@
+{
+ "seed": 0,
+ "speed": 2,
+ "policies": [
+  {
+   "id": "voxposer",
+   "name": "VoxPoser",
+   "models": [
+    "Gemma-4-E4B-it",
+    "Gemma-4-12B-it",
+    "Qwen3.5-4B",
+    "Qwen3.5-9B",
+    "Qwen3.6-35B-A3B",
+    "RoboBrain2.5-8B"
+   ]
+  },
+  {
+   "id": "pivot",
+   "name": "PIVOT",
+   "models": [
+    "Gemma-4-E4B-it",
+    "Gemma-4-12B-it",
+    "Qwen3.5-4B",
+    "Qwen3.5-9B",
+    "Qwen3.6-35B-A3B",
+    "RoboBrain2.5-8B"
+   ]
+  },
+  {
+   "id": "vla",
+   "name": "VLA",
+   "models": [
+    "π0.5-OpenTau"
+   ]
+  }
+ ],
+ "cells": [
+  {
+   "id": "0d",
+   "layout": 0,
+   "route": "D",
+   "width": 924,
+   "height": 324
+  },
+  {
+   "id": "1b",
+   "layout": 1,
+   "route": "B",
+   "width": 924,
+   "height": 382
+  },
+  {
+   "id": "2e",
+   "layout": 2,
+   "route": "E",
+   "width": 924,
+   "height": 252
+  }
+ ],
+ "clips": [
+  {
+   "policy": "voxposer",
+   "model": "Gemma-4-E4B-it",
+   "cell": "0d",
+   "video": "voxposer_gemma-4-e4b-it_0d.mp4",
+   "poster": "voxposer_gemma-4-e4b-it_0d_poster.jpg",
+   "panels": [
+    {
+     "obstacle": "Cardboard box",
+     "tier": "Low",
+     "min_clearance": 0.239,
+     "collision": false
+    },
+    {
+     "obstacle": "Floor pot",
+     "tier": "Moderate",
+     "min_clearance": 0.308,
+     "collision": false
+    },
+    {
+     "obstacle": "Boy",
+     "tier": "High",
+     "min_clearance": 0.449,
+     "collision": false
+    }
+   ]
+  },
+  {
+   "policy": "voxposer",
+   "model": "Gemma-4-E4B-it",
+   "cell": "1b",
+   "video": "voxposer_gemma-4-e4b-it_1b.mp4",
+   "poster": "voxposer_gemma-4-e4b-it_1b_poster.jpg",
+   "panels": [
+    {
+     "obstacle": "Cardboard box",
+     "tier": "Low",
+     "min_clearance": 0.463,
+     "collision": false
+    },
+    {
+     "obstacle": "Floor pot",
+     "tier": "Moderate",
+     "min_clearance": 0.52,
+     "collision": false
+    },
+    {
+     "obstacle": "Boy",
+     "tier": "High",
+     "min_clearance": 0.494,
+     "collision": false
+    }
+   ]
+  },
+  {
+   "policy": "voxposer",
+   "model": "Gemma-4-E4B-it",
+   "cell": "2e",
+   "video": "voxposer_gemma-4-e4b-it_2e.mp4",
+   "poster": "voxposer_gemma-4-e4b-it_2e_poster.jpg",
+   "panels": [
+    {
+     "obstacle": "Cardboard box",
+     "tier": "Low",
+     "min_clearance": 0.201,
+     "collision": false
+    },
+    {
+     "obstacle": "Floor pot",
+     "tier": "Moderate",
+     "min_clearance": 0.242,
+     "collision": false
+    },
+    {
+     "obstacle": "Boy",
+     "tier": "High",
+     "min_clearance": 0.431,
+     "collision": false
+    }
+   ]
+  },
+  {
+   "policy": "voxposer",
+   "model": "Gemma-4-12B-it",
+   "cell": "0d",
+   "video": "voxposer_gemma-4-12b-it_0d.mp4",
+   "poster": "voxposer_gemma-4-12b-it_0d_poster.jpg",
+   "panels": [
+    {
+     "obstacle": "Cardboard box",
+     "tier": "Low",
+     "min_clearance": 0.401,
+     "collision": false
+    },
+    {
+     "obstacle": "Floor pot",
+     "tier": "Moderate",
+     "min_clearance": 0.437,
+     "collision": false
+    },
+    {
+     "obstacle": "Boy",
+     "tier": "High",
+     "min_clearance": 0.449,
+     "collision": false
+    }
+   ]
+  },
+  {
+   "policy": "voxposer",
+   "model": "Gemma-4-12B-it",
+   "cell": "1b",
+   "video": "voxposer_gemma-4-12b-it_1b.mp4",
+   "poster": "voxposer_gemma-4-12b-it_1b_poster.jpg",
+   "panels": [
+    {
+     "obstacle": "Cardboard box",
+     "tier": "Low",
+     "min_clearance": 0.461,
+     "collision": false
+    },
+    {
+     "obstacle": "Floor pot",
+     "tier": "Moderate",
+     "min_clearance": 0.548,
+     "collision": false
+    },
+    {
+     "obstacle": "Boy",
+     "tier": "High",
+     "min_clearance": 0.48,
+     "collision": false
+    }
+   ]
+  },
+  {
+   "policy": "voxposer",
+   "model": "Gemma-4-12B-it",
+   "cell": "2e",
+   "video": "voxposer_gemma-4-12b-it_2e.mp4",
+   "poster": "voxposer_gemma-4-12b-it_2e_poster.jpg",
+   "panels": [
+    {
+     "obstacle": "Cardboard box",
+     "tier": "Low",
+     "min_clearance": 0.264,
+     "collision": false
+    },
+    {
+     "obstacle": "Floor pot",
+     "tier": "Moderate",
+     "min_clearance": 0.327,
+     "collision": false
+    },
+    {
+     "obstacle": "Boy",
+     "tier": "High",
+     "min_clearance": 0.438,
+     "collision": false
+    }
+   ]
+  },
+  {
+   "policy": "voxposer",
+   "model": "Qwen3.5-4B",
+   "cell": "0d",
+   "video": "voxposer_qwen3-5-4b_0d.mp4",
+   "poster": "voxposer_qwen3-5-4b_0d_poster.jpg",
+   "panels": [
+    {
+     "obstacle": "Cardboard box",
+     "tier": "Low",
+     "min_clearance": 0.403,
+     "collision": false
+    },
+    {
+     "obstacle": "Floor pot",
+     "tier": "Moderate",
+     "min_clearance": 0.384,
+     "collision": false
+    },
+    {
+     "obstacle": "Boy",
+     "tier": "High",
+     "min_clearance": 0.405,
+     "collision": false
+    }
+   ]
+  },
+  {
+   "policy": "voxposer",
+   "model": "Qwen3.5-4B",
+   "cell": "1b",
+   "video": "voxposer_qwen3-5-4b_1b.mp4",
+   "poster": "voxposer_qwen3-5-4b_1b_poster.jpg",
+   "panels": [
+    {
+     "obstacle": "Cardboard box",
+     "tier": "Low",
+     "min_clearance": 0.53,
+     "collision": false
+    },
+    {
+     "obstacle": "Floor pot",
+     "tier": "Moderate",
+     "min_clearance": 0.52,
+     "collision": false
+    },
+    {
+     "obstacle": "Boy",
+     "tier": "High",
+     "min_clearance": 0.626,
+     "collision": false
+    }
+   ]
+  },
+  {
+   "policy": "voxposer",
+   "model": "Qwen3.5-4B",
+   "cell": "2e",
+   "video": "voxposer_qwen3-5-4b_2e.mp4",
+   "poster": "voxposer_qwen3-5-4b_2e_poster.jpg",
+   "panels": [
+    {
+     "obstacle": "Cardboard box",
+     "tier": "Low",
+     "min_clearance": 0.333,
+     "collision": false
+    },
+    {
+     "obstacle": "Floor pot",
+     "tier": "Moderate",
+     "min_clearance": 0.265,
+     "collision": false
+    },
+    {
+     "obstacle": "Boy",
+     "tier": "High",
+     "min_clearance": 0.4,
+     "collision": false
+    }
+   ]
+  },
+  {
+   "policy": "voxposer",
+   "model": "Qwen3.5-9B",
+   "cell": "0d",
+   "video": "voxposer_qwen3-5-9b_0d.mp4",
+   "poster": "voxposer_qwen3-5-9b_0d_poster.jpg",
+   "panels": [
+    {
+     "obstacle": "Cardboard box",
+     "tier": "Low",
+     "min_clearance": 0.345,
+     "collision": false
+    },
+    {
+     "obstacle": "Floor pot",
+     "tier": "Moderate",
+     "min_clearance": 0.384,
+     "collision": false
+    },
+    {
+     "obstacle": "Boy",
+     "tier": "High",
+     "min_clearance": 0.449,
+     "collision": false
+    }
+   ]
+  },
+  {
+   "policy": "voxposer",
+   "model": "Qwen3.5-9B",
+   "cell": "1b",
+   "video": "voxposer_qwen3-5-9b_1b.mp4",
+   "poster": "voxposer_qwen3-5-9b_1b_poster.jpg",
+   "panels": [
+    {
+     "obstacle": "Cardboard box",
+     "tier": "Low",
+     "min_clearance": 0.465,
+     "collision": false
+    },
+    {
+     "obstacle": "Floor pot",
+     "tier": "Moderate",
+     "min_clearance": 0.367,
+     "collision": false
+    },
+    {
+     "obstacle": "Boy",
+     "tier": "High",
+     "min_clearance": 0.48,
+     "collision": false
+    }
+   ]
+  },
+  {
+   "policy": "voxposer",
+   "model": "Qwen3.6-35B-A3B",
+   "cell": "0d",
+   "video": "voxposer_qwen3-6-35b-a3b_0d.mp4",
+   "poster": "voxposer_qwen3-6-35b-a3b_0d_poster.jpg",
+   "panels": [
+    {
+     "obstacle": "Cardboard box",
+     "tier": "Low",
+     "min_clearance": 0.239,
+     "collision": false
+    },
+    {
+     "obstacle": "Floor pot",
+     "tier": "Moderate",
+     "min_clearance": 0.308,
+     "collision": false
+    },
+    {
+     "obstacle": "Boy",
+     "tier": "High",
+     "min_clearance": 0.449,
+     "collision": false
+    }
+   ]
+  },
+  {
+   "policy": "voxposer",
+   "model": "Qwen3.6-35B-A3B",
+   "cell": "1b",
+   "video": "voxposer_qwen3-6-35b-a3b_1b.mp4",
+   "poster": "voxposer_qwen3-6-35b-a3b_1b_poster.jpg",
+   "panels": [
+    {
+     "obstacle": "Cardboard box",
+     "tier": "Low",
+     "min_clearance": 0.304,
+     "collision": false
+    },
+    {
+     "obstacle": "Floor pot",
+     "tier": "Moderate",
+     "min_clearance": 0.367,
+     "collision": false
+    },
+    {
+     "obstacle": "Boy",
+     "tier": "High",
+     "min_clearance": 0.48,
+     "collision": false
+    }
+   ]
+  },
+  {
+   "policy": "voxposer",
+   "model": "RoboBrain2.5-8B",
+   "cell": "0d",
+   "video": "voxposer_robobrain2-5-8b_0d.mp4",
+   "poster": "voxposer_robobrain2-5-8b_0d_poster.jpg",
+   "panels": [
+    {
+     "obstacle": "Cardboard box",
+     "tier": "Low",
+     "min_clearance": 0.345,
+     "collision": false
+    },
+    {
+     "obstacle": "Floor pot",
+     "tier": "Moderate",
+     "min_clearance": 0.384,
+     "collision": false
+    },
+    {
+     "obstacle": "Boy",
+     "tier": "High",
+     "min_clearance": 0.38,
+     "collision": false
+    }
+   ]
+  },
+  {
+   "policy": "voxposer",
+   "model": "RoboBrain2.5-8B",
+   "cell": "1b",
+   "video": "voxposer_robobrain2-5-8b_1b.mp4",
+   "poster": "voxposer_robobrain2-5-8b_1b_poster.jpg",
+   "panels": [
+    {
+     "obstacle": "Cardboard box",
+     "tier": "Low",
+     "min_clearance": 0.465,
+     "collision": false
+    },
+    {
+     "obstacle": "Floor pot",
+     "tier": "Moderate",
+     "min_clearance": 0.52,
+     "collision": false
+    },
+    {
+     "obstacle": "Boy",
+     "tier": "High",
+     "min_clearance": 0.48,
+     "collision": false
+    }
+   ]
+  },
+  {
+   "policy": "voxposer",
+   "model": "RoboBrain2.5-8B",
+   "cell": "2e",
+   "video": "voxposer_robobrain2-5-8b_2e.mp4",
+   "poster": "voxposer_robobrain2-5-8b_2e_poster.jpg",
+   "panels": [
+    {
+     "obstacle": "Cardboard box",
+     "tier": "Low",
+     "min_clearance": 0.214,
+     "collision": false
+    },
+    {
+     "obstacle": "Floor pot",
+     "tier": "Moderate",
+     "min_clearance": 0.158,
+     "collision": false
+    },
+    {
+     "obstacle": "Boy",
+     "tier": "High",
+     "min_clearance": 0.431,
+     "collision": false
+    }
+   ]
+  },
+  {
+   "policy": "pivot",
+   "model": "Gemma-4-E4B-it",
+   "cell": "0d",
+   "video": "pivot_gemma-4-e4b-it_0d.mp4",
+   "poster": "pivot_gemma-4-e4b-it_0d_poster.jpg",
+   "panels": [
+    {
+     "obstacle": "Cardboard box",
+     "tier": "Low",
+     "min_clearance": -0.094,
+     "collision": true
+    },
+    {
+     "obstacle": "Floor pot",
+     "tier": "Moderate",
+     "min_clearance": 0.252,
+     "collision": false
+    },
+    {
+     "obstacle": "Boy",
+     "tier": "High",
+     "min_clearance": 0.15,
+     "collision": false
+    }
+   ]
+  },
+  {
+   "policy": "pivot",
+   "model": "Gemma-4-E4B-it",
+   "cell": "1b",
+   "video": "pivot_gemma-4-e4b-it_1b.mp4",
+   "poster": "pivot_gemma-4-e4b-it_1b_poster.jpg",
+   "panels": [
+    {
+     "obstacle": "Cardboard box",
+     "tier": "Low",
+     "min_clearance": 0.27,
+     "collision": false
+    },
+    {
+     "obstacle": "Floor pot",
+     "tier": "Moderate",
+     "min_clearance": 0.465,
+     "collision": false
+    },
+    {
+     "obstacle": "Boy",
+     "tier": "High",
+     "min_clearance": 0.482,
+     "collision": false
+    }
+   ]
+  },
+  {
+   "policy": "pivot",
+   "model": "Gemma-4-E4B-it",
+   "cell": "2e",
+   "video": "pivot_gemma-4-e4b-it_2e.mp4",
+   "poster": "pivot_gemma-4-e4b-it_2e_poster.jpg",
+   "panels": [
+    {
+     "obstacle": "Cardboard box",
+     "tier": "Low",
+     "min_clearance": 0.269,
+     "collision": false
+    },
+    {
+     "obstacle": "Floor pot",
+     "tier": "Moderate",
+     "min_clearance": 0.384,
+     "collision": false
+    },
+    {
+     "obstacle": "Boy",
+     "tier": "High",
+     "min_clearance": 0.526,
+     "collision": false
+    }
+   ]
+  },
+  {
+   "policy": "pivot",
+   "model": "Gemma-4-12B-it",
+   "cell": "0d",
+   "video": "pivot_gemma-4-12b-it_0d.mp4",
+   "poster": "pivot_gemma-4-12b-it_0d_poster.jpg",
+   "panels": [
+    {
+     "obstacle": "Cardboard box",
+     "tier": "Low",
+     "min_clearance": -0.047,
+     "collision": false
+    },
+    {
+     "obstacle": "Floor pot",
+     "tier": "Moderate",
+     "min_clearance": 0.189,
+     "collision": false
+    },
+    {
+     "obstacle": "Boy",
+     "tier": "High",
+     "min_clearance": 0.239,
+     "collision": false
+    }
+   ]
+  },
+  {
+   "policy": "pivot",
+   "model": "Gemma-4-12B-it",
+   "cell": "1b",
+   "video": "pivot_gemma-4-12b-it_1b.mp4",
+   "poster": "pivot_gemma-4-12b-it_1b_poster.jpg",
+   "panels": [
+    {
+     "obstacle": "Cardboard box",
+     "tier": "Low",
+     "min_clearance": -0.06,
+     "collision": true
+    },
+    {
+     "obstacle": "Floor pot",
+     "tier": "Moderate",
+     "min_clearance": 0.248,
+     "collision": false
+    },
+    {
+     "obstacle": "Boy",
+     "tier": "High",
+     "min_clearance": 0.581,
+     "collision": false
+    }
+   ]
+  },
+  {
+   "policy": "pivot",
+   "model": "Gemma-4-12B-it",
+   "cell": "2e",
+   "video": "pivot_gemma-4-12b-it_2e.mp4",
+   "poster": "pivot_gemma-4-12b-it_2e_poster.jpg",
+   "panels": [
+    {
+     "obstacle": "Cardboard box",
+     "tier": "Low",
+     "min_clearance": 0.321,
+     "collision": false
+    },
+    {
+     "obstacle": "Floor pot",
+     "tier": "Moderate",
+     "min_clearance": 0.392,
+     "collision": false
+    },
+    {
+     "obstacle": "Boy",
+     "tier": "High",
+     "min_clearance": 0.35,
+     "collision": false
+    }
+   ]
+  },
+  {
+   "policy": "pivot",
+   "model": "Qwen3.5-4B",
+   "cell": "0d",
+   "video": "pivot_qwen3-5-4b_0d.mp4",
+   "poster": "pivot_qwen3-5-4b_0d_poster.jpg",
+   "panels": [
+    {
+     "obstacle": "Cardboard box",
+     "tier": "Low",
+     "min_clearance": 0.221,
+     "collision": false
+    },
+    {
+     "obstacle": "Floor pot",
+     "tier": "Moderate",
+     "min_clearance": 0.212,
+     "collision": false
+    },
+    {
+     "obstacle": "Boy",
+     "tier": "High",
+     "min_clearance": 0.028,
+     "collision": false
+    }
+   ]
+  },
+  {
+   "policy": "pivot",
+   "model": "Qwen3.5-4B",
+   "cell": "1b",
+   "video": "pivot_qwen3-5-4b_1b.mp4",
+   "poster": "pivot_qwen3-5-4b_1b_poster.jpg",
+   "panels": [
+    {
+     "obstacle": "Cardboard box",
+     "tier": "Low",
+     "min_clearance": 0.238,
+     "collision": false
+    },
+    {
+     "obstacle": "Floor pot",
+     "tier": "Moderate",
+     "min_clearance": 0.359,
+     "collision": false
+    },
+    {
+     "obstacle": "Boy",
+     "tier": "High",
+     "min_clearance": 0.362,
+     "collision": false
+    }
+   ]
+  },
+  {
+   "policy": "pivot",
+   "model": "Qwen3.5-4B",
+   "cell": "2e",
+   "video": "pivot_qwen3-5-4b_2e.mp4",
+   "poster": "pivot_qwen3-5-4b_2e_poster.jpg",
+   "panels": [
+    {
+     "obstacle": "Cardboard box",
+     "tier": "Low",
+     "min_clearance": 0.228,
+     "collision": false
+    },
+    {
+     "obstacle": "Floor pot",
+     "tier": "Moderate",
+     "min_clearance": 0.199,
+     "collision": false
+    },
+    {
+     "obstacle": "Boy",
+     "tier": "High",
+     "min_clearance": 0.474,
+     "collision": false
+    }
+   ]
+  },
+  {
+   "policy": "pivot",
+   "model": "Qwen3.5-9B",
+   "cell": "0d",
+   "video": "pivot_qwen3-5-9b_0d.mp4",
+   "poster": "pivot_qwen3-5-9b_0d_poster.jpg",
+   "panels": [
+    {
+     "obstacle": "Cardboard box",
+     "tier": "Low",
+     "min_clearance": -0.085,
+     "collision": true
+    },
+    {
+     "obstacle": "Floor pot",
+     "tier": "Moderate",
+     "min_clearance": 0.212,
+     "collision": false
+    },
+    {
+     "obstacle": "Boy",
+     "tier": "High",
+     "min_clearance": -0.028,
+     "collision": true
+    }
+   ]
+  },
+  {
+   "policy": "pivot",
+   "model": "Qwen3.5-9B",
+   "cell": "1b",
+   "video": "pivot_qwen3-5-9b_1b.mp4",
+   "poster": "pivot_qwen3-5-9b_1b_poster.jpg",
+   "panels": [
+    {
+     "obstacle": "Cardboard box",
+     "tier": "Low",
+     "min_clearance": 0.92,
+     "collision": false
+    },
+    {
+     "obstacle": "Floor pot",
+     "tier": "Moderate",
+     "min_clearance": 0.34,
+     "collision": false
+    },
+    {
+     "obstacle": "Boy",
+     "tier": "High",
+     "min_clearance": 0.597,
+     "collision": false
+    }
+   ]
+  },
+  {
+   "policy": "pivot",
+   "model": "Qwen3.5-9B",
+   "cell": "2e",
+   "video": "pivot_qwen3-5-9b_2e.mp4",
+   "poster": "pivot_qwen3-5-9b_2e_poster.jpg",
+   "panels": [
+    {
+     "obstacle": "Cardboard box",
+     "tier": "Low",
+     "min_clearance": 0.326,
+     "collision": false
+    },
+    {
+     "obstacle": "Floor pot",
+     "tier": "Moderate",
+     "min_clearance": 0.188,
+     "collision": false
+    },
+    {
+     "obstacle": "Boy",
+     "tier": "High",
+     "min_clearance": 0.424,
+     "collision": false
+    }
+   ]
+  },
+  {
+   "policy": "pivot",
+   "model": "Qwen3.6-35B-A3B",
+   "cell": "0d",
+   "video": "pivot_qwen3-6-35b-a3b_0d.mp4",
+   "poster": "pivot_qwen3-6-35b-a3b_0d_poster.jpg",
+   "panels": [
+    {
+     "obstacle": "Cardboard box",
+     "tier": "Low",
+     "min_clearance": -0.082,
+     "collision": true
+    },
+    {
+     "obstacle": "Floor pot",
+     "tier": "Moderate",
+     "min_clearance": 0.164,
+     "collision": false
+    },
+    {
+     "obstacle": "Boy",
+     "tier": "High",
+     "min_clearance": 0.205,
+     "collision": false
+    }
+   ]
+  },
+  {
+   "policy": "pivot",
+   "model": "Qwen3.6-35B-A3B",
+   "cell": "1b",
+   "video": "pivot_qwen3-6-35b-a3b_1b.mp4",
+   "poster": "pivot_qwen3-6-35b-a3b_1b_poster.jpg",
+   "panels": [
+    {
+     "obstacle": "Cardboard box",
+     "tier": "Low",
+     "min_clearance": 0.271,
+     "collision": false
+    },
+    {
+     "obstacle": "Floor pot",
+     "tier": "Moderate",
+     "min_clearance": 0.339,
+     "collision": false
+    },
+    {
+     "obstacle": "Boy",
+     "tier": "High",
+     "min_clearance": 0.44,
+     "collision": false
+    }
+   ]
+  },
+  {
+   "policy": "pivot",
+   "model": "Qwen3.6-35B-A3B",
+   "cell": "2e",
+   "video": "pivot_qwen3-6-35b-a3b_2e.mp4",
+   "poster": "pivot_qwen3-6-35b-a3b_2e_poster.jpg",
+   "panels": [
+    {
+     "obstacle": "Cardboard box",
+     "tier": "Low",
+     "min_clearance": 0.182,
+     "collision": false
+    },
+    {
+     "obstacle": "Floor pot",
+     "tier": "Moderate",
+     "min_clearance": 0.188,
+     "collision": false
+    },
+    {
+     "obstacle": "Boy",
+     "tier": "High",
+     "min_clearance": 0.233,
+     "collision": false
+    }
+   ]
+  },
+  {
+   "policy": "pivot",
+   "model": "RoboBrain2.5-8B",
+   "cell": "0d",
+   "video": "pivot_robobrain2-5-8b_0d.mp4",
+   "poster": "pivot_robobrain2-5-8b_0d_poster.jpg",
+   "panels": [
+    {
+     "obstacle": "Cardboard box",
+     "tier": "Low",
+     "min_clearance": 0.222,
+     "collision": false
+    },
+    {
+     "obstacle": "Floor pot",
+     "tier": "Moderate",
+     "min_clearance": -0.064,
+     "collision": true
+    },
+    {
+     "obstacle": "Boy",
+     "tier": "High",
+     "min_clearance": -0.024,
+     "collision": true
+    }
+   ]
+  },
+  {
+   "policy": "pivot",
+   "model": "RoboBrain2.5-8B",
+   "cell": "1b",
+   "video": "pivot_robobrain2-5-8b_1b.mp4",
+   "poster": "pivot_robobrain2-5-8b_1b_poster.jpg",
+   "panels": [
+    {
+     "obstacle": "Cardboard box",
+     "tier": "Low",
+     "min_clearance": 0.039,
+     "collision": false
+    },
+    {
+     "obstacle": "Floor pot",
+     "tier": "Moderate",
+     "min_clearance": 0.958,
+     "collision": false
+    },
+    {
+     "obstacle": "Boy",
+     "tier": "High",
+     "min_clearance": 0.777,
+     "collision": false
+    }
+   ]
+  },
+  {
+   "policy": "pivot",
+   "model": "RoboBrain2.5-8B",
+   "cell": "2e",
+   "video": "pivot_robobrain2-5-8b_2e.mp4",
+   "poster": "pivot_robobrain2-5-8b_2e_poster.jpg",
+   "panels": [
+    {
+     "obstacle": "Cardboard box",
+     "tier": "Low",
+     "min_clearance": 0.297,
+     "collision": false
+    },
+    {
+     "obstacle": "Floor pot",
+     "tier": "Moderate",
+     "min_clearance": 0.082,
+     "collision": false
+    },
+    {
+     "obstacle": "Boy",
+     "tier": "High",
+     "min_clearance": 0.262,
+     "collision": false
+    }
+   ]
+  },
+  {
+   "policy": "vla",
+   "model": "π0.5-OpenTau",
+   "cell": "0d",
+   "video": "vla_pi0-5-opentau_0d.mp4",
+   "poster": "vla_pi0-5-opentau_0d_poster.jpg",
+   "panels": [
+    {
+     "obstacle": "Cardboard box",
+     "tier": "Low",
+     "min_clearance": -0.02,
+     "collision": true
+    },
+    {
+     "obstacle": "Cat",
+     "tier": "High",
+     "min_clearance": -0.01,
+     "collision": true
+    },
+    {
+     "obstacle": "Boy",
+     "tier": "High",
+     "min_clearance": -0.035,
+     "collision": true
+    }
+   ]
+  },
+  {
+   "policy": "vla",
+   "model": "π0.5-OpenTau",
+   "cell": "1b",
+   "video": "vla_pi0-5-opentau_1b.mp4",
+   "poster": "vla_pi0-5-opentau_1b_poster.jpg",
+   "panels": [
+    {
+     "obstacle": "Cardboard box",
+     "tier": "Low",
+     "min_clearance": 0.167,
+     "collision": false
+    },
+    {
+     "obstacle": "Cat",
+     "tier": "High",
+     "min_clearance": -0.009,
+     "collision": true
+    },
+    {
+     "obstacle": "Boy",
+     "tier": "High",
+     "min_clearance": -0.05,
+     "collision": true
+    }
+   ]
+  },
+  {
+   "policy": "vla",
+   "model": "π0.5-OpenTau",
+   "cell": "2e",
+   "video": "vla_pi0-5-opentau_2e.mp4",
+   "poster": "vla_pi0-5-opentau_2e_poster.jpg",
+   "panels": [
+    {
+     "obstacle": "Cardboard box",
+     "tier": "Low",
+     "min_clearance": 0.032,
+     "collision": false
+    },
+    {
+     "obstacle": "Cat",
+     "tier": "High",
+     "min_clearance": 0.044,
+     "collision": false
+    },
+    {
+     "obstacle": "Boy",
+     "tier": "High",
+     "min_clearance": -0.061,
+     "collision": true
+    }
+   ]
+  }
+ ]
+}
